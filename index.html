@@ -1,0 +1,1307 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="description" content="Cadastro de presentes do Dia das Criancas 2027">
+<meta name="theme-color" content="#6333d8">
+</head>
+<body>
+<title>Entrega de Presentes 2027</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Instrument+Sans:wght@0,400;0,500;0,600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: portaria com duas portas (Cadastrar / Colaboradores no canto). Quem cadastra escreve só na própria gaveta; a lista inteira existe apenas para Editores. Fundo de manchas em movimento desfocado. */
+:root{
+  --bg:#f4f1fb;--surface:#ffffff;--surface-2:#faf8ff;--ink:#241a3d;--ink-2:#6a608a;--line:#e2dbf3;
+  --uva:#6333d8;--uva-soft:#ece4ff;--manga:#e8590c;--manga-soft:#fff0e4;--menta:#0b8f73;--menta-soft:#dcf5ee;
+  --shadow:0 1px 2px rgba(36,26,61,.06),0 10px 30px -18px rgba(36,26,61,.35);
+  --radius:16px;
+  --font-display:"Fredoka","Trebuchet MS",system-ui,sans-serif;
+  --font-body:"Instrument Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  --font-mono:"IBM Plex Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
+  --aura:.62;
+  --g1:rgba(139,92,246,.45);--g2:rgba(255,138,61,.36);--g3:rgba(23,199,166,.32);
+  background:var(--bg);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#110c20;--surface:#1a1430;--surface-2:#211a3d;--ink:#f4f0fd;--ink-2:#a79cc6;--line:#2f2654;
+    --uva:#b096ff;--uva-soft:#2a2050;--manga:#ff9d62;--manga-soft:#3a2415;--menta:#4bd9b2;--menta-soft:#10332c;
+    --shadow:0 1px 2px rgba(0,0,0,.4),0 14px 34px -18px rgba(0,0,0,.8);--aura:.5;--g1:rgba(139,92,246,.4);--g2:rgba(255,138,61,.26);--g3:rgba(23,199,166,.24);color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#110c20;--surface:#1a1430;--surface-2:#211a3d;--ink:#f4f0fd;--ink-2:#a79cc6;--line:#2f2654;
+  --uva:#b096ff;--uva-soft:#2a2050;--manga:#ff9d62;--manga-soft:#3a2415;--menta:#4bd9b2;--menta-soft:#10332c;
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 14px 34px -18px rgba(0,0,0,.8);--aura:.5;--g1:rgba(139,92,246,.4);--g2:rgba(255,138,61,.26);--g3:rgba(23,199,166,.24);color-scheme:dark;
+}
+
+*{box-sizing:border-box}
+body{
+  background-color:var(--bg);
+  background-image:
+    radial-gradient(58vmax 58vmax at 8% 2%, var(--g1), transparent 68%),
+    radial-gradient(52vmax 52vmax at 96% 94%, var(--g2), transparent 68%),
+    radial-gradient(46vmax 46vmax at 64% 44%, var(--g3), transparent 70%);
+  background-attachment:fixed,fixed,fixed;
+  background-repeat:no-repeat;
+  animation:fundo-vivo 30s ease-in-out infinite alternate;
+  min-height:100vh;color:var(--ink);font-family:var(--font-body);font-size:15px;line-height:1.5;-webkit-font-smoothing:antialiased;overflow-x:hidden
+}
+@keyframes fundo-vivo{from{background-position:0% 0%,100% 100%,50% 50%}to{background-position:18% 14%,82% 86%,36% 64%}}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:30;background:var(--surface)}
+h1,h2,h3{font-family:var(--font-display);font-weight:600;text-wrap:balance;margin:0;letter-spacing:-.01em}
+button{font:inherit;color:inherit}
+
+.aura{position:fixed;inset:0;z-index:0;overflow:hidden;pointer-events:none}
+/* A maciez vem do próprio gradiente; o blur é curto para o celular não descartar a camada. */
+.blob{position:absolute;border-radius:50%;opacity:var(--aura);filter:blur(calc(26px + var(--arrasto,0px)));will-change:transform,filter;transform:translateZ(0);backface-visibility:hidden;transition:filter .2s linear}
+/* O rastro é a mesma forma percorrendo o mesmo caminho com atraso: é ele que borra o movimento. */
+.blob.trail{filter:blur(calc(54px + var(--arrasto,0px) * 1.8));opacity:calc(var(--aura) * .55)}
+.blob-1{width:44vmax;height:44vmax;background:radial-gradient(circle at 50% 50%,#8b5cf6 0%,rgba(139,92,246,.6) 34%,rgba(139,92,246,.18) 56%,rgba(139,92,246,0) 73%);top:-13vmax;left:-9vmax;animation:drift-1 19s ease-in-out infinite}
+.blob-1.trail{animation-delay:-1.1s}
+.blob-2{width:38vmax;height:38vmax;background:radial-gradient(circle at 50% 50%,#ff8a3d 0%,rgba(255,138,61,.55) 32%,rgba(255,138,61,.16) 56%,rgba(255,138,61,0) 73%);bottom:-15vmax;right:-11vmax;animation:drift-2 23s ease-in-out infinite}
+.blob-2.trail{animation-delay:-1.3s}
+.blob-3{width:32vmax;height:32vmax;background:radial-gradient(circle at 50% 50%,#17c7a6 0%,rgba(23,199,166,.55) 32%,rgba(23,199,166,.16) 56%,rgba(23,199,166,0) 73%);top:36%;left:44%;animation:drift-3 26s ease-in-out infinite}
+.blob-3.trail{animation-delay:-1.5s}
+@media (min-width:900px){
+  .blob-1{width:64vmax;height:64vmax;top:-24vmax;left:-18vmax}
+  .blob-2{width:58vmax;height:58vmax;bottom:-24vmax;right:-16vmax}
+  .blob-3{width:48vmax;height:48vmax;top:22%;left:32%}
+}
+@keyframes drift-1{0%,100%{transform:translate3d(0,0,0) scale(1)}33%{transform:translate3d(26vmax,14vmax,0) scale(1.18)}66%{transform:translate3d(8vmax,28vmax,0) scale(.9)}}
+@keyframes drift-2{0%,100%{transform:translate3d(0,0,0) scale(1)}40%{transform:translate3d(-30vmax,-18vmax,0) scale(1.16)}70%{transform:translate3d(-10vmax,-4vmax,0) scale(.88)}}
+@keyframes drift-3{0%,100%{transform:translate3d(0,0,0) scale(.85)}50%{transform:translate3d(-32vmax,-22vmax,0) scale(1.22)}}
+
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:color-mix(in srgb,var(--surface) 86%,transparent);backdrop-filter:blur(14px) saturate(1.4);border-bottom:1px solid var(--line)}
+.bar-in{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:11px;max-width:1080px;margin:0 auto;display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;justify-content:space-between}
+.brand{display:flex;align-items:center;gap:10px;min-width:0;background:none;border:0;padding:0;cursor:pointer;text-align:left}
+.mark{width:34px;height:34px;flex:none;border-radius:11px;background:var(--uva);color:#fff;display:grid;place-items:center;font-size:17px;box-shadow:0 6px 16px -8px var(--uva)}
+.brand h1{font-size:16.5px;line-height:1.15}
+.brand .sub{font-size:11px;color:var(--ink-2);letter-spacing:.09em;text-transform:uppercase;font-weight:500;display:block}
+.corner{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.tally{display:flex;align-items:center;gap:9px;font-family:var(--font-mono);font-size:12.5px;color:var(--ink-2);font-variant-numeric:tabular-nums}
+.tally b{font-family:var(--font-display);font-size:16px;color:var(--ink)}
+.meter{width:72px;height:6px;border-radius:99px;background:var(--line);overflow:hidden;flex:none}
+.meter i{display:block;height:100%;width:0;border-radius:99px;background:var(--menta);transition:width .6s cubic-bezier(.2,.8,.2,1)}
+.corner-link{background:transparent;border:1px solid var(--line);border-radius:99px;padding:7px 13px;font-size:13px;font-weight:600;color:var(--ink-2);cursor:pointer;display:inline-flex;align-items:center;gap:6px;transition:color .18s,border-color .18s,background .18s}
+.corner-link:hover{color:var(--uva);border-color:var(--uva);background:var(--uva-soft)}
+.corner-link.on{color:var(--uva);border-color:color-mix(in srgb,var(--uva) 35%,transparent);background:var(--uva-soft)}
+.segs{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 10px;max-width:1080px;margin:0 auto;display:flex;gap:6px}
+.seg{flex:1;padding:9px 12px;border-radius:11px;border:1px solid transparent;background:transparent;color:var(--ink-2);font-weight:600;font-size:14px;cursor:pointer}
+.seg:hover{color:var(--ink)}
+.seg[aria-selected="true"]{background:var(--uva-soft);color:var(--uva);border-color:color-mix(in srgb,var(--uva) 24%,transparent)}
+.seg .n{font-family:var(--font-mono);font-size:12px;opacity:.75;margin-left:5px;font-variant-numeric:tabular-nums}
+
+main{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:24px 96px;max-width:1080px;margin:0 auto;position:relative;z-index:1}
+.panel{animation:blur-in .5s cubic-bezier(.2,.8,.2,1) both}
+@keyframes blur-in{from{opacity:0;filter:blur(18px);transform:translateY(10px)}to{opacity:1;filter:blur(0);transform:none}}
+.panel.leaving{animation:blur-out .17s ease-in both}
+@keyframes blur-out{from{opacity:1;filter:blur(0);transform:none}to{opacity:0;filter:blur(16px);transform:translateY(-8px) scale(.99)}}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow)}
+.narrow{max-width:520px;margin:0 auto}
+.lede{font-size:14px;color:var(--ink-2);max-width:62ch;margin:0 0 18px}
+
+.hero{text-align:center;padding-block:28px 6px}
+.hero .gift{font-size:52px;line-height:1;filter:blur(.3px);animation:float 6s ease-in-out infinite}
+@keyframes float{0%,100%{transform:translateY(0) rotate(-3deg)}50%{transform:translateY(-9px) rotate(3deg)}}
+.hero .date{font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--uva);font-weight:600;margin-top:14px}
+.hero h2{font-size:clamp(27px,8vw,40px);line-height:1.05;margin:8px auto 12px;max-width:16ch}
+.hero p{font-size:15px;color:var(--ink-2);max-width:40ch;margin:0 auto 26px}
+.doors{display:grid;gap:12px;max-width:460px;margin:0 auto}
+.door{display:flex;align-items:center;gap:14px;text-align:left;width:100%;cursor:pointer;padding:18px;border-radius:var(--radius);border:1.5px solid var(--line);background:var(--surface);box-shadow:var(--shadow);transition:transform .14s,border-color .2s,filter .2s}
+.door:active{transform:scale(.985)}
+.door:hover{border-color:var(--uva)}
+.door:focus-visible{outline:2.5px solid var(--uva);outline-offset:3px}
+.door .ico{width:46px;height:46px;flex:none;border-radius:14px;display:grid;place-items:center;font-size:22px;background:var(--uva-soft)}
+.door .t{min-width:0}
+.door .t strong{display:block;font-family:var(--font-display);font-size:18px;font-weight:600}
+.door .t span{font-size:13px;color:var(--ink-2)}
+.door-main{background:var(--uva);border-color:var(--uva);color:#fff;box-shadow:0 14px 30px -16px var(--uva)}
+.door-main:hover{filter:brightness(1.07)}
+.door-main .ico{background:rgba(255,255,255,.18)}
+.door-main .t span{color:rgba(255,255,255,.82)}
+.door-quiet .t strong{font-size:16px}
+
+form{padding:20px}
+.field{display:flex;flex-direction:column;gap:6px;margin-bottom:16px}
+.field label{font-size:12px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--ink-2)}
+.field input{width:100%;padding:12px 13px;font:inherit;font-size:16px;color:var(--ink);background:var(--surface-2);border:1.5px solid var(--line);border-radius:11px;transition:border-color .18s,box-shadow .18s}
+.field input::placeholder{color:color-mix(in srgb,var(--ink-2) 65%,transparent)}
+.field input:focus{outline:none;border-color:var(--uva);box-shadow:0 0 0 3px var(--uva-soft)}
+.field input#telefone,.field input[type="password"]{font-family:var(--font-mono);letter-spacing:.02em}
+.field .hint{font-size:12px;color:var(--ink-2)}
+.field .opcional{font-size:10.5px;font-weight:600;letter-spacing:.06em;color:var(--ink-2);background:var(--surface-2);border:1px solid var(--line);border-radius:99px;padding:1px 7px;margin-left:6px;text-transform:none}
+.who .idade{display:inline-block;margin-left:7px;font-family:var(--font-body);font-size:11.5px;font-weight:600;color:var(--ink-2);background:var(--surface-2);border:1px solid var(--line);border-radius:99px;padding:1px 8px;vertical-align:middle}
+.field.bad input{border-color:var(--manga)}
+.field .err{font-size:12.5px;color:var(--manga);font-weight:500}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:12px 18px;border-radius:12px;border:1.5px solid transparent;cursor:pointer;font-weight:600;font-size:15px;transition:transform .12s,filter .2s,background .2s,border-color .2s}
+.btn:active{transform:scale(.975)}
+.btn:focus-visible{outline:2.5px solid var(--uva);outline-offset:2px}
+.btn-primary{background:var(--uva);color:#fff;width:100%;padding-block:14px;box-shadow:0 10px 24px -14px var(--uva)}
+.btn-primary:hover{filter:brightness(1.08)}
+.btn-primary[disabled]{opacity:.55;cursor:default;transform:none}
+.btn-ghost{background:transparent;border-color:var(--line);color:var(--ink)}
+.btn-ghost:hover{background:var(--surface-2);border-color:var(--ink-2)}
+.btn-wide{width:100%}
+.btn-deliver{background:var(--menta);color:#fff;padding:9px 15px;font-size:14px;box-shadow:0 8px 18px -12px var(--menta)}
+.btn-deliver:hover{filter:brightness(1.07)}
+.btn-tiny{background:transparent;border-color:var(--line);color:var(--ink-2);padding:7px 11px;font-size:13px;font-weight:500}
+.btn-tiny:hover{color:var(--ink);border-color:var(--ink-2)}
+.btn-danger{color:var(--manga);border-color:color-mix(in srgb,var(--manga) 40%,transparent);background:var(--manga-soft)}
+.link-quiet{background:none;border:0;color:var(--ink-2);font-size:13px;text-decoration:underline;cursor:pointer;padding:8px 0;display:block;margin:0 auto}
+.link-quiet:hover{color:var(--uva)}
+.back{display:inline-flex;align-items:center;gap:6px;background:none;border:0;color:var(--ink-2);font-size:13.5px;font-weight:600;cursor:pointer;padding:4px 0;margin-bottom:12px}
+.back:hover{color:var(--uva)}
+
+.confirm{text-align:center;padding:34px 22px}
+.confirm .big{font-size:48px;line-height:1;animation:pop .6s cubic-bezier(.2,1.3,.3,1) both}
+@keyframes pop{from{opacity:0;filter:blur(14px);transform:scale(.6)}to{opacity:1;filter:blur(0);transform:none}}
+.confirm h2{font-size:24px;margin:14px 0 8px}
+.confirm p{font-size:14px;color:var(--ink-2);max-width:36ch;margin:0 auto 22px}
+.confirm .acts{display:grid;gap:9px;max-width:300px;margin:0 auto}
+.mine{margin-top:20px;text-align:left}
+.mine h3{font-size:13px;letter-spacing:.07em;text-transform:uppercase;color:var(--ink-2);margin-bottom:8px}
+.mine ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:7px}
+.mine li{display:flex;align-items:center;gap:9px;padding:10px 12px;border:1px solid var(--line);border-radius:11px;background:var(--surface-2);font-size:14px}
+.mine li .nm{flex:1;min-width:0;overflow-wrap:anywhere;font-weight:500}
+
+.tiles{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-bottom:18px}
+.tile{padding:14px 15px;border-radius:14px;border:1px solid var(--line);background:var(--surface)}
+.tile .k{font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2);font-weight:600}
+.tile .v{font-family:var(--font-display);font-size:30px;line-height:1.1;margin-top:4px;font-variant-numeric:tabular-nums}
+.tile-pend .v{color:var(--manga)}
+.tile-done .v{color:var(--menta)}
+@media (max-width:460px){.tile .v{font-size:25px}}
+
+.tools{display:flex;flex-wrap:wrap;gap:9px;align-items:center;margin-bottom:14px}
+.search{position:relative;flex:1 1 200px;min-width:0}
+.search input{width:100%;padding:10px 12px 10px 34px;font:inherit;font-size:15px;color:var(--ink);background:var(--surface);border:1.5px solid var(--line);border-radius:11px}
+.search input:focus{outline:none;border-color:var(--uva);box-shadow:0 0 0 3px var(--uva-soft)}
+.search svg{position:absolute;left:11px;top:50%;transform:translateY(-50%);color:var(--ink-2)}
+.chips{display:flex;gap:6px;flex:0 0 auto}
+.chip-f{padding:9px 13px;border-radius:99px;border:1.5px solid var(--line);background:var(--surface);color:var(--ink-2);font-size:13.5px;font-weight:600;cursor:pointer}
+.chip-f[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.exports{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px;align-items:center}
+
+.rowhead{display:none}
+@media (min-width:820px){
+  .rowhead{display:grid;gap:14px;align-items:center;padding:0 16px 8px;grid-template-columns:minmax(0,1.5fr) minmax(0,.85fr) minmax(0,1fr) auto auto;grid-template-areas:"who tel when chip acts";font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2);font-weight:600}
+}
+.list{display:flex;flex-direction:column;gap:9px}
+.rowcard{position:relative;overflow:hidden;display:grid;gap:11px 14px;align-items:center;padding:14px 16px;grid-template-columns:minmax(0,1fr) auto;grid-template-areas:"who chip" "tel tel" "when when" "acts acts";background:var(--surface);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);animation:row-in .45s cubic-bezier(.2,.8,.2,1) both;animation-delay:calc(var(--i,0) * 26ms)}
+@media (min-width:820px){.rowcard{grid-template-columns:minmax(0,1.5fr) minmax(0,.85fr) minmax(0,1fr) auto auto;grid-template-areas:"who tel when chip acts"}}
+@keyframes row-in{from{opacity:0;filter:blur(12px);transform:translateY(10px) scale(.985)}to{opacity:1;filter:blur(0);transform:none}}
+.rowcard.is-done{background:linear-gradient(90deg,var(--menta-soft),var(--surface) 42%)}
+.who{grid-area:who;min-width:0}
+.who .kid{font-family:var(--font-display);font-size:17px;line-height:1.25;overflow-wrap:anywhere}
+.who .guardian{font-size:13px;color:var(--ink-2);overflow-wrap:anywhere}
+.who .dup{display:inline-flex;align-items:center;gap:4px;margin-top:4px;font-size:11.5px;font-weight:600;color:var(--manga);background:var(--manga-soft);border-radius:99px;padding:2px 8px}
+.tel{grid-area:tel;min-width:0}
+.tel button{font-family:var(--font-mono);font-size:13.5px;background:transparent;border:1px dashed var(--line);border-radius:9px;padding:5px 9px;cursor:pointer;color:var(--ink)}
+.tel button:hover{border-style:solid;border-color:var(--uva);color:var(--uva)}
+.when{grid-area:when;min-width:0;font-size:12.5px;color:var(--ink-2);font-variant-numeric:tabular-nums}
+.when .by{display:block;overflow-wrap:anywhere}
+.chip{grid-area:chip;justify-self:start;display:inline-flex;align-items:center;gap:6px;padding:5px 11px 5px 9px;border-radius:99px;font-size:12.5px;font-weight:600;white-space:nowrap}
+@media (min-width:820px){.chip{justify-self:center}}
+.chip i{width:7px;height:7px;border-radius:50%;background:currentColor;flex:none}
+.chip-pend{background:var(--manga-soft);color:var(--manga)}
+.chip-done{background:var(--menta-soft);color:var(--menta)}
+.acts{grid-area:acts;display:flex;gap:7px;flex-wrap:wrap}
+@media (min-width:820px){.acts{justify-self:end}}
+@media (max-width:819px){.acts .btn-deliver{flex:1 1 auto}}
+.rowcard.swoosh::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,transparent,color-mix(in srgb,var(--menta) 55%,transparent),transparent);animation:trail .75s cubic-bezier(.3,.7,.2,1) both}
+@keyframes trail{from{transform:translateX(-110%) scaleX(.5);filter:blur(14px);opacity:.95}to{transform:translateX(110%) scaleX(1.8);filter:blur(30px);opacity:0}}
+.rowcard.settle{animation:settle .5s cubic-bezier(.2,.8,.2,1) both}
+@keyframes settle{from{filter:blur(9px);transform:scale(.99)}to{filter:blur(0);transform:none}}
+
+.ghost{height:68px;border-radius:14px;border:1px solid var(--line);background:linear-gradient(100deg,var(--surface),var(--surface-2),var(--surface));background-size:220% 100%;animation:shimmer 1.5s linear infinite;filter:blur(.4px)}
+@keyframes shimmer{from{background-position:120% 0}to{background-position:-60% 0}}
+.empty{padding:40px 22px;text-align:center;border-radius:var(--radius);border:1.5px dashed var(--line);background:color-mix(in srgb,var(--surface) 60%,transparent)}
+.empty .big{font-size:30px;filter:blur(.3px)}
+.empty h3{font-size:18px;margin:10px 0 6px}
+.empty p{font-size:13.5px;color:var(--ink-2);max-width:42ch;margin:0 auto 16px}
+.notice{display:flex;gap:10px;align-items:flex-start;padding:12px 14px;border-radius:12px;background:var(--uva-soft);border:1px solid color-mix(in srgb,var(--uva) 25%,transparent);font-size:13.5px;margin-bottom:16px}
+.notice.warn{background:var(--manga-soft);border-color:color-mix(in srgb,var(--manga) 30%,transparent)}
+.notice b{font-weight:600}
+.pwbox{padding:18px 20px;border-top:1px solid var(--line)}
+.pwbox:first-child{border-top:0}
+.pwbox h3{font-size:15px;margin-bottom:4px}
+.pwbox p{font-size:13px;color:var(--ink-2);margin:0 0 14px}
+.shield{display:grid;gap:10px;margin-top:18px}
+.shield div{display:flex;gap:10px;align-items:flex-start;font-size:13px;color:var(--ink-2);line-height:1.45}
+.shield b{color:var(--ink);font-weight:600}
+
+#toasts{position:fixed;left:0;right:0;bottom:0;z-index:40;display:flex;flex-direction:column;align-items:center;gap:8px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-bottom:calc(16px + env(safe-area-inset-bottom,0px));pointer-events:none}
+.toast{pointer-events:auto;display:flex;align-items:center;gap:12px;max-width:440px;width:100%;padding:13px 15px;border-radius:14px;background:var(--surface);border:1px solid var(--line);box-shadow:0 1px 2px rgba(0,0,0,.06),0 20px 44px -20px rgba(36,26,61,.55);animation:toast-in .42s cubic-bezier(.2,.9,.2,1) both}
+.toast.out{animation:toast-out .3s ease-in both}
+@keyframes toast-in{from{opacity:0;filter:blur(16px);transform:translateY(26px) scale(.96)}to{opacity:1;filter:blur(0);transform:none}}
+@keyframes toast-out{to{opacity:0;filter:blur(14px);transform:translateY(14px) scale(.97)}}
+.toast .ico{width:32px;height:32px;flex:none;border-radius:10px;display:grid;place-items:center;font-size:16px;background:var(--menta-soft);color:var(--menta)}
+.toast.warn .ico{background:var(--manga-soft);color:var(--manga)}
+.toast.info .ico{background:var(--uva-soft);color:var(--uva)}
+.toast .txt{flex:1;min-width:0;font-size:14px;line-height:1.35;overflow-wrap:anywhere}
+.toast .txt b{font-weight:600}
+.toast .undo{flex:none;background:transparent;border:1.5px solid var(--line);border-radius:9px;padding:6px 10px;font-size:13px;font-weight:600;cursor:pointer;color:var(--ink)}
+.toast .undo:hover{border-color:var(--uva);color:var(--uva)}
+
+.footnote{margin-top:26px;font-size:12.5px;color:var(--ink-2);text-align:center}
+.motion-row{margin-top:20px;text-align:center}
+.motion-btn{background:transparent;border:1px solid var(--line);border-radius:99px;padding:8px 14px;font-size:12.5px;font-weight:600;color:var(--ink-2);cursor:pointer;transition:color .18s,border-color .18s}
+.motion-btn:hover{color:var(--uva);border-color:var(--uva)}
+.motion-hint{margin:9px auto 0;max-width:36ch;font-size:11.5px;color:var(--ink-2);line-height:1.45}
+.versao{margin-top:14px;text-align:center;font-family:var(--font-mono);font-size:11px;letter-spacing:.06em;color:var(--ink-2);opacity:.75}
+.sound{background:transparent;border:1px solid var(--line);border-radius:99px;padding:6px 11px;font-size:12.5px;cursor:pointer;color:var(--ink-2)}
+.sound:hover{color:var(--ink);border-color:var(--ink-2)}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+@media (prefers-reduced-motion:reduce){
+  :root:not([data-motion="on"]) *{animation-duration:.001s!important;animation-iteration-count:1!important;transition-duration:.001s!important}
+  :root:not([data-motion="on"]) .blob{animation:none}
+}
+:root[data-motion="off"] *{animation-duration:.001s!important;animation-iteration-count:1!important;transition-duration:.001s!important}
+:root[data-motion="off"] .blob{animation:none}
+</style>
+
+<div class="aura" aria-hidden="true">
+  <div class="blob blob-1 trail"></div>
+  <div class="blob blob-1"></div>
+  <div class="blob blob-2 trail"></div>
+  <div class="blob blob-2"></div>
+  <div class="blob blob-3 trail"></div>
+  <div class="blob blob-3"></div>
+</div>
+
+<header class="bar">
+  <div class="bar-in">
+    <button class="brand" id="home" type="button" title="Voltar ao início">
+      <span class="mark" aria-hidden="true">🎁</span>
+      <span>
+        <span class="sub">Dia das Crianças · 2027</span>
+        <h1>Entrega de Presentes</h1>
+      </span>
+    </button>
+    <div class="corner">
+      <div class="tally" id="tally" hidden>
+        <span><b id="t-done">0</b> de <b id="t-all">0</b> entregues</span>
+        <span class="meter" aria-hidden="true"><i id="t-meter"></i></span>
+      </div>
+      <button class="corner-link" id="corner-btn" type="button">🔑 Colaboradores</button>
+    </div>
+  </div>
+  <nav class="segs" id="segs" role="tablist" aria-label="Seções" hidden>
+    <button class="seg" id="seg-painel" role="tab" aria-selected="true">Planilha<span class="n" id="seg-count"></span></button>
+    <button class="seg" id="seg-acesso" role="tab" aria-selected="false">Acesso</button>
+  </nav>
+</header>
+
+<main>
+  <!-- PORTARIA -->
+  <section class="panel" id="view-inicio">
+    <div class="hero">
+      <div class="gift" aria-hidden="true">🎁</div>
+      <div class="date">12 de outubro de 2027</div>
+      <h2>Nenhuma criança sem presente</h2>
+      <p>Cadastre a criança que vai receber o presente. Leva menos de um minuto.</p>
+    </div>
+    <div class="doors">
+      <button class="door door-main" id="door-cadastro" type="button">
+        <span class="ico" aria-hidden="true">✍️</span>
+        <span class="t"><strong>Cadastrar</strong><span>Seu nome, telefone e o nome da criança</span></span>
+      </button>
+      <button class="door door-quiet" id="door-equipe" type="button">
+        <span class="ico" aria-hidden="true">🔑</span>
+        <span class="t"><strong>Colaboradores</strong><span>Entrar para ver a lista completa e registrar entregas</span></span>
+      </button>
+    </div>
+    <div class="narrow shield">
+      <div><span aria-hidden="true">🔒</span><span>Quem cadastra vê <b>só o próprio cadastro</b>. A lista com nomes e telefones de todos existe apenas para os colaboradores da organização.</span></div>
+    </div>
+    <div class="motion-row">
+      <button class="motion-btn" id="motion-toggle" type="button" aria-pressed="true">✨ Efeito de movimento</button>
+      <p class="motion-hint" id="motion-hint" hidden></p>
+    </div>
+    <p class="versao">versão 9 · 22 de outubro</p>
+  </section>
+
+  <!-- CADASTRO -->
+  <section class="panel" id="view-cadastro" hidden>
+    <div class="narrow">
+      <button class="back" id="back-1" type="button">← Início</button>
+      <p class="lede">Preencha os três campos. O cadastro entra na lista da equipe na hora, com status <b>pendente</b>, e muda para entregue quando o presente chegar na mão da criança.</p>
+      <div id="ro-notice" hidden></div>
+      <div class="card">
+        <form id="form" novalidate>
+          <div class="field" id="f-nome">
+            <label for="nome">Seu nome</label>
+            <input id="nome" type="text" autocomplete="name" placeholder="Maria Souza" maxlength="80" required>
+            <span class="err" hidden></span>
+          </div>
+          <div class="field" id="f-telefone">
+            <label for="telefone">Telefone com DDD</label>
+            <input id="telefone" type="tel" inputmode="numeric" autocomplete="tel" placeholder="(11) 98888-7777" maxlength="16" required>
+            <span class="err" hidden></span>
+          </div>
+          <div class="field" id="f-crianca">
+            <label for="crianca">Nome da criança</label>
+            <input id="crianca" type="text" autocomplete="off" placeholder="Pedro Souza" maxlength="80" required>
+            <span class="hint">Quem vai receber o presente.</span>
+            <span class="err" hidden></span>
+          </div>
+          <div class="field" id="f-idade">
+            <label for="idade">Idade da criança <span class="opcional">opcional</span></label>
+            <input id="idade" type="text" inputmode="numeric" placeholder="7" maxlength="2">
+            <span class="hint">Ajuda a equipe a escolher um presente da idade certa.</span>
+            <span class="err" hidden></span>
+          </div>
+          <button class="btn btn-primary" id="submit" type="submit">Cadastrar presente</button>
+        </form>
+      </div>
+      <div class="shield">
+        <div><span aria-hidden="true">🔒</span><span>Seu telefone fica guardado na <b>sua gaveta</b> do app: nenhuma outra pessoa que cadastra consegue ler, só os colaboradores da organização.</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONFIRMAÇÃO -->
+  <section class="panel" id="view-feito" hidden>
+    <div class="narrow">
+      <div class="card confirm">
+        <div class="big" aria-hidden="true">🎉</div>
+        <h2 id="feito-h">Cadastro feito!</h2>
+        <p id="feito-p">A equipe já recebeu e vai falar com você pelo telefone que ficou aí.</p>
+        <div class="acts">
+          <button class="btn btn-primary" id="feito-outro" type="button">Cadastrar outra criança</button>
+          <button class="btn btn-ghost btn-wide" id="feito-inicio" type="button">Voltar ao início</button>
+        </div>
+      </div>
+      <div class="card mine" id="mine-box" hidden style="padding:16px 18px">
+        <h3 id="mine-h">Seus cadastros</h3>
+        <ul id="mine-list"></ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- LOGIN -->
+  <section class="panel" id="view-login" hidden>
+    <div class="narrow">
+      <button class="back" id="back-2" type="button">← Início</button>
+      <h2 style="font-size:22px;margin-bottom:6px">Área dos colaboradores</h2>
+      <p class="lede">Entre para ver a lista completa e registrar as entregas.</p>
+      <div id="login-notice" hidden></div>
+      <div class="card" id="login-card">
+        <form id="login-form" novalidate>
+          <div class="field" id="f-usuario">
+            <label for="usuario">Usuário</label>
+            <input id="usuario" type="text" autocomplete="username" autocapitalize="none" spellcheck="false" placeholder="admin" maxlength="40" required>
+            <span class="err" hidden></span>
+          </div>
+          <div class="field" id="f-senha">
+            <label for="senha">Senha</label>
+            <input id="senha" type="password" autocomplete="current-password" placeholder="••••••••" maxlength="80" required>
+            <span class="err" hidden></span>
+          </div>
+          <button class="btn btn-primary" id="login-btn" type="submit">Entrar</button>
+          <button class="link-quiet" id="esqueci" type="button">Esqueci a senha</button>
+        </form>
+      </div>
+      <div class="card" id="definir-card" hidden>
+        <div class="pwbox">
+          <h3 id="definir-h">Defina o acesso da equipe</h3>
+          <p>Como você tem acesso de Editor neste app, pode criar o usuário e a senha que a equipe vai usar.</p>
+          <form id="definir-form" novalidate>
+            <div class="field" id="f-du">
+              <label for="def-usuario">Usuário</label>
+              <input id="def-usuario" type="text" autocomplete="off" autocapitalize="none" spellcheck="false" maxlength="40" required>
+              <span class="err" hidden></span>
+            </div>
+            <div class="field" id="f-ds">
+              <label for="def-senha">Senha</label>
+              <input id="def-senha" type="password" autocomplete="new-password" placeholder="mínimo 6 caracteres" maxlength="80" required>
+              <span class="err" hidden></span>
+            </div>
+            <button class="btn btn-primary" id="definir-btn" type="submit">Salvar e entrar</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PAINEL -->
+  <section class="panel" id="view-painel" hidden>
+    <div class="tiles">
+      <div class="tile"><div class="k">Cadastros</div><div class="v" id="s-all">0</div></div>
+      <div class="tile tile-pend"><div class="k">Pendentes</div><div class="v" id="s-pend">0</div></div>
+      <div class="tile tile-done"><div class="k">Entregues</div><div class="v" id="s-done">0</div></div>
+    </div>
+    <div class="tools">
+      <div class="search">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.6-3.6"/></svg>
+        <input id="q" type="search" placeholder="Buscar criança, responsável ou telefone" aria-label="Buscar">
+      </div>
+      <div class="chips" role="group" aria-label="Filtrar por status">
+        <button class="chip-f" data-filter="todos" aria-pressed="true">Todos</button>
+        <button class="chip-f" data-filter="pendente" aria-pressed="false">Pendentes</button>
+        <button class="chip-f" data-filter="entregue" aria-pressed="false">Entregues</button>
+      </div>
+    </div>
+    <div class="exports">
+      <button class="btn btn-ghost btn-tiny" id="dl-csv">Baixar planilha (.csv)</button>
+      <button class="btn btn-ghost btn-tiny" id="copy-tsv">Copiar para o Sheets/Excel</button>
+      <button class="sound" id="sound-toggle" aria-pressed="true">Som: ligado</button>
+    </div>
+    <div class="rowhead" aria-hidden="true">
+      <div style="grid-area:who">Criança / responsável</div>
+      <div style="grid-area:tel">Telefone</div>
+      <div style="grid-area:when">Cadastro / entrega</div>
+      <div style="grid-area:chip;text-align:center">Status</div>
+      <div style="grid-area:acts">Ação</div>
+    </div>
+    <div class="list" id="list" aria-live="polite"></div>
+  </section>
+
+  <!-- ACESSO -->
+  <section class="panel" id="view-acesso" hidden>
+    <div class="narrow">
+      <h2 style="font-size:22px;margin-bottom:6px">Acesso e segurança</h2>
+      <p class="lede">Um usuário e senha para toda a equipe, por cima do controle de acesso da plataforma.</p>
+      <div class="card">
+        <div class="pwbox">
+          <h3>Trocar usuário e senha</h3>
+          <p>Vale para todos a partir de agora. Quem já está logado continua logado.</p>
+          <form id="pw-form" novalidate>
+            <div class="field" id="f-nu">
+              <label for="novo-usuario">Novo usuário</label>
+              <input id="novo-usuario" type="text" autocomplete="off" autocapitalize="none" spellcheck="false" maxlength="40" required>
+              <span class="err" hidden></span>
+            </div>
+            <div class="field" id="f-ns">
+              <label for="nova-senha">Nova senha</label>
+              <input id="nova-senha" type="password" autocomplete="new-password" placeholder="mínimo 6 caracteres" maxlength="80" required>
+              <span class="err" hidden></span>
+            </div>
+            <div class="field" id="f-ns2">
+              <label for="nova-senha2">Repita a nova senha</label>
+              <input id="nova-senha2" type="password" autocomplete="new-password" maxlength="80" required>
+              <span class="err" hidden></span>
+            </div>
+            <button class="btn btn-primary" id="pw-btn" type="submit">Salvar novo acesso</button>
+          </form>
+        </div>
+        <div class="pwbox">
+          <h3>Sair deste aparelho</h3>
+          <p>Fecha a área dos colaboradores só aqui. O link do cadastro continua funcionando.</p>
+          <button class="btn btn-ghost btn-wide" id="logout" type="button">Sair da conta</button>
+        </div>
+      </div>
+      <div class="shield">
+        <div><span aria-hidden="true">🛡️</span><span><b>O que tranca a lista</b> é o nível de acesso do link, não a senha: só quem é Editor da organização consegue ler os cadastros das outras pessoas. Quem cadastra lê e escreve apenas a própria gaveta.</span></div>
+        <div><span aria-hidden="true">🔑</span><span><b>A senha é a segunda camada</b>, para o aparelho emprestado ou a tela aberta no balcão. Fica guardada como hash SHA-256 com sal, num documento que só Editores conseguem ler.</span></div>
+        <div><span aria-hidden="true">📵</span><span><b>Nada sai do app.</b> Nenhum telefone aparece na tela do público, nos contadores ou no código da página.</span></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<div id="toasts" role="status" aria-live="polite"></div>
+<span class="sr" id="sr" aria-live="assertive"></span>
+
+<script>
+(function(){
+  "use strict";
+
+  var SHEET_URL = "https://docs.google.com/spreadsheets/d/1qS5k-uMCPLVWyZnvTY8amnP1ukli2E4WaBXKq-e7_9w/edit";
+  var SESSION_KEY = "equipe-sessao-gs";
+  var MEUS_KEY = "meus-cadastros";
+  var SESSION_MS = 12 * 60 * 60 * 1000;
+  var POLL_MS = 12000;
+  var VIEWS = ["inicio","cadastro","feito","login","painel","acesso"];
+
+  var state = {
+    rows: null, mine: [], view: "inicio", admin: false, cred: null,
+    filter: "todos", q: "", sound: true, carregando: false
+  };
+  var pollTimer = null, pendente = Object.create(null), recem = Object.create(null);
+
+  var $ = function(i){ return document.getElementById(i); };
+  function el(tag, cls, text){
+    var n = document.createElement(tag);
+    if (cls) n.className = cls;
+    if (text != null) n.textContent = text;
+    return n;
+  }
+  function lsGet(k, fb){ try { var v = localStorage.getItem(k); return v === null ? fb : v; } catch(e){ return fb; } }
+  function lsSet(k, v){ try { localStorage.setItem(k, v); } catch(e){} }
+  function lsDel(k){ try { localStorage.removeItem(k); } catch(e){} }
+  state.sound = lsGet("som", "1") === "1";
+
+  /* ---------- servidor ---------- */
+  /* Endereco do backend. Vazio = modo de teste, com os dados so neste aparelho. */
+  var ENDPOINT = "";
+
+  function call(fn, dados){
+    if (!ENDPOINT) return Promise.resolve(demo(fn, dados || {}));
+    return fetch(ENDPOINT, {
+      method: "POST",
+      headers: { "Content-Type": "text/plain;charset=utf-8" },
+      body: JSON.stringify({ fn: fn, dados: dados || {} }),
+      redirect: "follow"
+    }).then(function(r){ return r.json(); });
+  }
+
+  /* ---- modo de teste: imita o servidor usando o armazenamento do proprio navegador ---- */
+  var DEMO_KEY = "demo-planilha", DEMO_CRED = "demo-cred";
+  function demoLinhas(){
+    try { var v = JSON.parse(lsGet(DEMO_KEY, "[]")); return Object.prototype.toString.call(v) === "[object Array]" ? v : []; }
+    catch(e){ return []; }
+  }
+  function demoGravar(l){ lsSet(DEMO_KEY, JSON.stringify(l)); }
+  function demoCred(){
+    try { var c = JSON.parse(lsGet(DEMO_CRED, "null")); if (c && c.u) return c; } catch(e){}
+    return { u: "admin", p: "presente2027" };
+  }
+  function demo(fn, d){
+    var linhas = demoLinhas(), cred = demoCred();
+    var autenticado = (d.u === cred.u && d.p === cred.p);
+    if (fn === "api_cadastrar") {
+      if (!d.nome || d.nome.length < 2) return { ok:false, erro:"nome" };
+      if (!d.telefone || d.telefone.length < 10) return { ok:false, erro:"telefone" };
+      if (!d.crianca || d.crianca.length < 2) return { ok:false, erro:"crianca" };
+      if (d.idade && Number(d.idade) > 17) return { ok:false, erro:"idade" };
+      if (!d.forcar) {
+        for (var i = 0; i < linhas.length; i++) {
+          if (norm(linhas[i].crianca) === norm(d.crianca)) return { ok:false, erro:"duplicado", nome: linhas[i].nome };
+        }
+      }
+      var id = "d" + Date.now().toString(16);
+      linhas.push({ id:id, crianca:d.crianca, idade:d.idade || "", nome:d.nome, telefone:maskPhone(d.telefone),
+        status:"pendente", criadoEm:new Date().toISOString(), entregueEm:"", entreguePor:"" });
+      demoGravar(linhas);
+      return { ok:true, id:id };
+    }
+    if (fn === "api_login") return autenticado ? { ok:true, usuario:cred.u } : { ok:false, erro:"credenciais" };
+    if (fn === "api_listar") {
+      if (!autenticado) return { ok:false, erro:"auth" };
+      var contagem = {};
+      linhas.forEach(function(l){ var k = norm(l.crianca); contagem[k] = (contagem[k] || 0) + 1; });
+      linhas.forEach(function(l){ l.repetido = contagem[norm(l.crianca)] > 1; });
+      return { ok:true, linhas: linhas.slice().reverse(), agora:new Date().toISOString() };
+    }
+    if (fn === "api_entregar") {
+      if (!autenticado) return { ok:false, erro:"auth" };
+      var achou = false;
+      linhas.forEach(function(l){
+        if (l.id !== d.id) return;
+        achou = true;
+        if (d.entregue) { l.status = "entregue"; l.entregueEm = new Date().toISOString(); l.entreguePor = d.quem || cred.u; }
+        else { l.status = "pendente"; l.entregueEm = ""; l.entreguePor = ""; }
+      });
+      if (!achou) return { ok:false, erro:"nao-encontrado" };
+      demoGravar(linhas);
+      return { ok:true };
+    }
+    if (fn === "api_remover") {
+      if (!autenticado) return { ok:false, erro:"auth" };
+      demoGravar(linhas.filter(function(l){ return l.id !== d.id; }));
+      return { ok:true };
+    }
+    if (fn === "api_trocarAcesso") {
+      if (!autenticado) return { ok:false, erro:"auth" };
+      if (!d.novoUsuario || d.novoUsuario.length < 3) return { ok:false, erro:"usuario-curto" };
+      if (!d.novaSenha || d.novaSenha.length < 6) return { ok:false, erro:"senha-curta" };
+      lsSet(DEMO_CRED, JSON.stringify({ u:d.novoUsuario, p:d.novaSenha }));
+      return { ok:true, usuario:d.novoUsuario };
+    }
+    return { ok:false, erro:"desconhecido" };
+  }
+  function comSenha(extra){
+    var p = { u: state.cred ? state.cred.u : "", p: state.cred ? state.cred.p : "" };
+    if (extra) for (var k in extra) if (Object.prototype.hasOwnProperty.call(extra, k)) p[k] = extra[k];
+    return p;
+  }
+
+  /* ---------- som ---------- */
+  var actx = null;
+  function chime(){
+    if (!state.sound) return;
+    try {
+      var AC = window.AudioContext || window.webkitAudioContext;
+      if (!AC) return;
+      actx = actx || new AC();
+      var t0 = actx.currentTime;
+      [784, 1175].forEach(function(f, i){
+        var o = actx.createOscillator(), g = actx.createGain(), t = t0 + i * 0.085;
+        o.type = "sine"; o.frequency.value = f;
+        g.gain.setValueAtTime(0.0001, t);
+        g.gain.linearRampToValueAtTime(0.16, t + 0.02);
+        g.gain.exponentialRampToValueAtTime(0.0001, t + 0.34);
+        o.connect(g); g.connect(actx.destination);
+        o.start(t); o.stop(t + 0.36);
+      });
+    } catch(e){}
+  }
+
+  /* ---------- notificações ---------- */
+  function toast(opts){
+    var node = el("div", "toast" + (opts.kind ? " " + opts.kind : ""));
+    node.appendChild(el("span", "ico", opts.icon || "🎁"));
+    var txt = el("div", "txt");
+    if (opts.strong) {
+      txt.appendChild(el("b", null, opts.strong));
+      txt.appendChild(document.createTextNode(" " + (opts.text || "")));
+    } else txt.textContent = opts.text || "";
+    node.appendChild(txt);
+    if (opts.undo) {
+      var b = el("button", "undo", opts.undoLabel || "Desfazer");
+      b.type = "button";
+      b.addEventListener("click", function(){ fechar(); opts.undo(); });
+      node.appendChild(b);
+    }
+    $("toasts").appendChild(node);
+    $("sr").textContent = (opts.strong ? opts.strong + " " : "") + (opts.text || "");
+    var timer = setTimeout(fechar, opts.ms || (opts.undo ? 7000 : 4200));
+    function fechar(){
+      clearTimeout(timer);
+      if (!node.parentNode) return;
+      node.classList.add("out");
+      setTimeout(function(){ if (node.parentNode) node.parentNode.removeChild(node); }, 320);
+    }
+    return fechar;
+  }
+
+  /* ---------- utilidades ---------- */
+  function digits(s){ return String(s || "").replace(/\D/g, ""); }
+  function maskPhone(v){
+    var d = digits(v).slice(0, 11);
+    if (!d) return "";
+    if (d.length <= 2) return "(" + d;
+    if (d.length <= 6) return "(" + d.slice(0,2) + ") " + d.slice(2);
+    if (d.length <= 10) return "(" + d.slice(0,2) + ") " + d.slice(2,6) + "-" + d.slice(6);
+    return "(" + d.slice(0,2) + ") " + d.slice(2,7) + "-" + d.slice(7);
+  }
+  function norm(s){
+    return String(s || "").trim().toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "").replace(/\s+/g, " ");
+  }
+  function fmtDate(iso){
+    if (!iso) return "—";
+    var d = new Date(iso);
+    if (isNaN(d.getTime())) return String(iso);
+    try { return d.toLocaleString("pt-BR", { day:"2-digit", month:"2-digit", year:"2-digit", hour:"2-digit", minute:"2-digit" }); }
+    catch(e){ return d.toISOString().slice(0,16).replace("T", " "); }
+  }
+  function setErr(campo, msg){
+    var f = $(campo); f.classList.add("bad");
+    var s = f.querySelector(".err"); s.textContent = msg; s.hidden = false;
+  }
+  function clearErr(campo){
+    var f = $(campo); f.classList.remove("bad");
+    var s = f.querySelector(".err"); s.hidden = true; s.textContent = "";
+  }
+  function aviso(alvo, tipo, texto){
+    var box = $(alvo);
+    box.className = "notice" + (tipo === "warn" ? " warn" : "");
+    box.innerHTML = "";
+    box.appendChild(el("span", null, tipo === "warn" ? "⚠️" : "ℹ️"));
+    box.appendChild(el("div", null, texto));
+    box.hidden = false;
+  }
+
+  /* ---------- controle do movimento ---------- */
+  function sistemaPedeMenos(){
+    try { return window.matchMedia("(prefers-reduced-motion: reduce)").matches; } catch(e){ return false; }
+  }
+  function movimentoLigado(){
+    var a = document.documentElement.getAttribute("data-motion");
+    if (a === "on") return true;
+    if (a === "off") return false;
+    return !sistemaPedeMenos();
+  }
+  function pintarMovimento(){
+    var on = movimentoLigado(), b = $("motion-toggle"), h = $("motion-hint");
+    b.textContent = "✨ Efeito de movimento: " + (on ? "ligado" : "desligado");
+    b.setAttribute("aria-pressed", on ? "true" : "false");
+    if (sistemaPedeMenos() && document.documentElement.getAttribute("data-motion") !== "on") {
+      h.textContent = "Seu computador está configurado para reduzir animações, então o app desligou o efeito sozinho. Toque no botão para ligar mesmo assim.";
+      h.hidden = false;
+    } else h.hidden = true;
+  }
+  (function(){
+    var salvo = lsGet("movimento", null);
+    if (salvo === "on" || salvo === "off") document.documentElement.setAttribute("data-motion", salvo);
+  })();
+  $("motion-toggle").addEventListener("click", function(){
+    var on = !movimentoLigado();
+    document.documentElement.setAttribute("data-motion", on ? "on" : "off");
+    lsSet("movimento", on ? "on" : "off");
+    pintarMovimento();
+    var p = $("view-" + state.view);
+    p.classList.remove("panel"); void p.offsetWidth; p.classList.add("panel");
+    toast(on
+      ? { kind:"info", icon:"✨", text:"Movimento ligado. O fundo volta a se mexer e as telas trocam com borrão." }
+      : { kind:"info", icon:"⏸️", text:"Movimento desligado. O app fica parado." });
+  });
+  function reduzMovimento(){ return !movimentoLigado(); }
+
+  /* ---------- navegação ---------- */
+  var trocando = false;
+  function setView(v){
+    if (VIEWS.indexOf(v) === -1) v = "inicio";
+    if ((v === "painel" || v === "acesso") && !state.admin) v = "login";
+    if (trocando) return;
+    var atual = null;
+    for (var k = 0; k < VIEWS.length; k++) { if (!$("view-" + VIEWS[k]).hidden) { atual = VIEWS[k]; break; } }
+    if (atual && atual !== v && !reduzMovimento()) {
+      var saindo = $("view-" + atual);
+      trocando = true;
+      saindo.classList.add("leaving");
+      setTimeout(function(){ saindo.classList.remove("leaving"); trocando = false; aplicarView(v); }, 170);
+      return;
+    }
+    aplicarView(v);
+  }
+  function aplicarView(v){
+    state.view = v;
+    VIEWS.forEach(function(nome){
+      var node = $("view-" + nome), on = nome === v;
+      node.hidden = !on;
+      if (on) { node.classList.remove("panel"); void node.offsetWidth; node.classList.add("panel"); }
+    });
+    var equipe = (v === "painel" || v === "acesso");
+    $("segs").hidden = !(state.admin && equipe);
+    $("tally").hidden = !(state.admin && equipe);
+    $("seg-painel").setAttribute("aria-selected", v === "painel" ? "true" : "false");
+    $("seg-acesso").setAttribute("aria-selected", v === "acesso" ? "true" : "false");
+    pintarCanto();
+    try { window.scrollTo(0, 0); } catch(e){}
+    if (v === "painel") { render(); atualizar(); ligarPoll(); } else desligarPoll();
+  }
+  function pintarCanto(){
+    var b = $("corner-btn");
+    if (state.admin) {
+      var dentro = (state.view === "painel" || state.view === "acesso");
+      b.textContent = dentro ? "🚪 Sair" : "🔑 Planilha da equipe";
+      b.classList.toggle("on", dentro);
+    } else {
+      b.textContent = "🔑 Colaboradores";
+      b.classList.remove("on");
+    }
+  }
+  $("corner-btn").addEventListener("click", function(){
+    if (!state.admin) { setView("login"); return; }
+    if (state.view === "painel" || state.view === "acesso") sair();
+    else setView("painel");
+  });
+  $("home").addEventListener("click", function(){ setView(state.admin ? "painel" : "inicio"); });
+  $("door-cadastro").addEventListener("click", function(){ setView("cadastro"); $("nome").focus(); });
+  $("door-equipe").addEventListener("click", function(){ setView(state.admin ? "painel" : "login"); });
+  $("back-1").addEventListener("click", function(){ setView("inicio"); });
+  $("back-2").addEventListener("click", function(){ setView("inicio"); });
+  $("feito-outro").addEventListener("click", function(){ setView("cadastro"); $("nome").focus(); });
+  $("feito-inicio").addEventListener("click", function(){ setView("inicio"); });
+  $("seg-painel").addEventListener("click", function(){ setView("painel"); });
+  $("seg-acesso").addEventListener("click", function(){ setView("acesso"); });
+
+  /* ---------- cadastro (aberto a qualquer pessoa com o link) ---------- */
+  var tel = $("telefone");
+  tel.addEventListener("input", function(){
+    var fim = tel.selectionStart === tel.value.length;
+    tel.value = maskPhone(tel.value);
+    if (fim) { try { tel.setSelectionRange(tel.value.length, tel.value.length); } catch(e){} }
+    clearErr("f-telefone");
+  });
+  $("idade").addEventListener("input", function(){
+    this.value = digits(this.value).slice(0, 2);
+    clearErr("f-idade");
+  });
+  ["nome","crianca"].forEach(function(id){
+    $(id).addEventListener("input", function(){ clearErr("f-" + id); forcar = false; });
+  });
+
+  var forcar = false;
+  $("form").addEventListener("submit", function(ev){
+    ev.preventDefault();
+    var nome = $("nome").value.trim().replace(/\s+/g, " ");
+    var crianca = $("crianca").value.trim().replace(/\s+/g, " ");
+    var fone = digits(tel.value);
+    var idade = digits($("idade").value).slice(0, 2);
+    var ok = true;
+    clearErr("f-nome"); clearErr("f-telefone"); clearErr("f-crianca"); clearErr("f-idade");
+    if (nome.length < 2) { setErr("f-nome", "Escreva seu nome completo."); ok = false; }
+    if (fone.length < 10 || fone.length > 11) { setErr("f-telefone", "Telefone com DDD: 10 ou 11 números."); ok = false; }
+    if (crianca.length < 2) { setErr("f-crianca", "Escreva o nome da criança."); ok = false; }
+    if (idade && Number(idade) > 17) { setErr("f-idade", "Use a idade da criança, de 0 a 17."); ok = false; }
+    if (!ok) return;
+
+    var btn = $("submit");
+    btn.disabled = true;
+    btn.textContent = "Salvando na planilha…";
+
+    call("api_cadastrar", { nome:nome, telefone:fone, crianca:crianca, idade:idade, forcar:forcar })
+      .then(function(r){
+        btn.disabled = false;
+        if (r && r.ok) {
+          btn.textContent = "Cadastrar presente";
+          forcar = false;
+          guardarMeu({ id:r.id, crianca:crianca, idade:idade });
+          $("form").reset();
+          clearErr("f-nome"); clearErr("f-telefone"); clearErr("f-crianca"); clearErr("f-idade");
+          $("feito-h").textContent = "Pronto, " + nome.split(" ")[0] + "!";
+          $("feito-p").textContent = "O presente de " + crianca + " entrou na planilha da equipe. Qualquer coisa, falamos pelo " + maskPhone(fone) + ".";
+          pintarMeus();
+          setView("feito");
+          chime();
+          return;
+        }
+        if (r && r.erro === "duplicado") {
+          btn.textContent = "Cadastrar mesmo assim";
+          forcar = true;
+          setErr("f-crianca", "Já existe uma criança com esse nome na lista. Toque de novo para cadastrar assim mesmo.");
+          return;
+        }
+        btn.textContent = "Cadastrar presente";
+        if (r && r.erro === "ocupado") toast({ kind:"warn", icon:"⏳", text:"A planilha está recebendo outro cadastro. Toque em cadastrar de novo." });
+        else if (r && r.erro === "nome") setErr("f-nome", "Escreva seu nome completo.");
+        else if (r && r.erro === "telefone") setErr("f-telefone", "Telefone com DDD: 10 ou 11 números.");
+        else if (r && r.erro === "crianca") setErr("f-crianca", "Escreva o nome da criança.");
+        else toast({ kind:"warn", icon:"⚠️", text:"Não deu para salvar na planilha agora. Tente novamente." });
+      })
+      .catch(function(){
+        btn.disabled = false;
+        btn.textContent = "Cadastrar presente";
+        toast({ kind:"warn", icon:"⚠️", ms:7000, text:"Falha de conexão com a planilha. Verifique a internet e tente de novo." });
+      });
+  });
+
+  /* o aparelho lembra o que ele mesmo cadastrou; nada disso sai daqui */
+  function meus(){
+    try { var v = JSON.parse(lsGet(MEUS_KEY, "[]")); return Object.prototype.toString.call(v) === "[object Array]" ? v : []; }
+    catch(e){ return []; }
+  }
+  function guardarMeu(item){
+    var l = meus();
+    l.push(item);
+    lsSet(MEUS_KEY, JSON.stringify(l.slice(-20)));
+    state.mine = l;
+  }
+  function pintarMeus(){
+    var lista = meus();
+    var box = $("mine-box"), ul = $("mine-list");
+    if (!lista.length) { box.hidden = true; return; }
+    ul.innerHTML = "";
+    lista.slice().reverse().forEach(function(it){
+      var li = el("li");
+      li.appendChild(el("span", "nm", it.crianca + (it.idade ? " · " + it.idade + " anos" : "")));
+      var chip = el("span", "chip chip-pend");
+      chip.style.gridArea = "auto";
+      chip.appendChild(el("i"));
+      chip.appendChild(document.createTextNode("Na lista"));
+      li.appendChild(chip);
+      ul.appendChild(li);
+    });
+    $("mine-h").textContent = lista.length === 1 ? "Seu cadastro" : "Seus cadastros (" + lista.length + ")";
+    box.hidden = false;
+  }
+
+  /* ---------- login ---------- */
+  $("login-form").addEventListener("submit", function(ev){
+    ev.preventDefault();
+    var u = $("usuario").value.trim(), p = $("senha").value;
+    var ok = true;
+    clearErr("f-usuario"); clearErr("f-senha");
+    if (!u) { setErr("f-usuario", "Informe o usuário."); ok = false; }
+    if (!p) { setErr("f-senha", "Informe a senha."); ok = false; }
+    if (!ok) return;
+
+    var btn = $("login-btn");
+    btn.disabled = true;
+    btn.textContent = "Verificando…";
+    call("api_login", { u:u, p:p }).then(function(r){
+      btn.disabled = false;
+      btn.textContent = "Entrar";
+      if (r && r.ok) {
+        state.cred = { u:u, p:p };
+        state.admin = true;
+        lsSet(SESSION_KEY, JSON.stringify({ u:u, p:p, exp: Date.now() + SESSION_MS }));
+        $("login-notice").hidden = true;
+        $("senha").value = "";
+        setView("painel");
+        toast({ kind:"info", icon:"🔑", strong:"Bem-vindo,", text:(r.usuario || u) + ". A planilha é consultada a cada poucos segundos." });
+      } else {
+        setErr("f-senha", "Usuário ou senha incorretos.");
+        toast({ kind:"warn", icon:"🔒", text:"Usuário ou senha incorretos." });
+      }
+    }).catch(function(){
+      btn.disabled = false;
+      btn.textContent = "Entrar";
+      aviso("login-notice", "warn", "Não deu para falar com a planilha agora. Recarregue a página e tente de novo.");
+    });
+  });
+
+  $("esqueci").addEventListener("click", function(){
+    aviso("login-notice", "info", "A senha fica guardada no servidor do Google, não neste navegador. Quem administra a planilha redefine em Extensões → Apps Script → Configurações do projeto → Propriedades do script (ADMIN_USER e ADMIN_PASS).");
+  });
+  $("definir-form").addEventListener("submit", function(ev){
+    ev.preventDefault();
+    aviso("login-notice", "info", "Esta versão guarda o acesso no servidor. Entre com o usuário atual e troque a senha na aba Acesso.");
+  });
+  $("definir-card").hidden = true;
+
+  function sair(){
+    state.admin = false;
+    state.cred = null;
+    state.rows = null;
+    lsDel(SESSION_KEY);
+    desligarPoll();
+    setView("inicio");
+    toast({ kind:"info", icon:"🚪", text:"Você saiu da área dos colaboradores." });
+  }
+  $("logout").addEventListener("click", sair);
+
+  function restaurarSessao(){
+    var cru = lsGet(SESSION_KEY, null);
+    if (!cru) return false;
+    try {
+      var s = JSON.parse(cru);
+      if (s && s.u && s.p && s.exp && s.exp > Date.now()) {
+        state.admin = true; state.cred = { u:s.u, p:s.p }; return true;
+      }
+    } catch(e){}
+    lsDel(SESSION_KEY);
+    return false;
+  }
+
+  /* ---------- trocar acesso ---------- */
+  $("pw-form").addEventListener("submit", function(ev){
+    ev.preventDefault();
+    var u = $("novo-usuario").value.trim(), p = $("nova-senha").value, p2 = $("nova-senha2").value;
+    var ok = true;
+    clearErr("f-nu"); clearErr("f-ns"); clearErr("f-ns2");
+    if (u.length < 3) { setErr("f-nu", "Use pelo menos 3 caracteres."); ok = false; }
+    if (p.length < 6) { setErr("f-ns", "Use pelo menos 6 caracteres."); ok = false; }
+    if (p !== p2) { setErr("f-ns2", "As senhas não são iguais."); ok = false; }
+    if (!ok) return;
+
+    var btn = $("pw-btn");
+    btn.disabled = true;
+    btn.textContent = "Salvando…";
+    call("api_trocarAcesso", comSenha({ novoUsuario:u, novaSenha:p })).then(function(r){
+      btn.disabled = false;
+      btn.textContent = "Salvar novo acesso";
+      if (r && r.ok) {
+        state.cred = { u:u, p:p };
+        lsSet(SESSION_KEY, JSON.stringify({ u:u, p:p, exp: Date.now() + SESSION_MS }));
+        $("pw-form").reset();
+        toast({ kind:"info", icon:"🔑", text:"Acesso atualizado. Avise a equipe: usuário " + u + "." });
+      } else if (r && r.erro === "auth") { toast({ kind:"warn", icon:"🔒", text:"Sua sessão expirou. Entre de novo." }); sair(); }
+      else toast({ kind:"warn", icon:"⚠️", text:"Não deu para salvar o novo acesso." });
+    }).catch(function(){
+      btn.disabled = false;
+      btn.textContent = "Salvar novo acesso";
+      toast({ kind:"warn", icon:"⚠️", text:"Falha de conexão ao salvar o acesso." });
+    });
+  });
+
+  /* ---------- planilha ao vivo ---------- */
+  function ligarPoll(){
+    desligarPoll();
+    pollTimer = setInterval(function(){
+      if (document.hidden || state.view !== "painel") return;
+      atualizar();
+    }, POLL_MS);
+  }
+  function desligarPoll(){ if (pollTimer) { clearInterval(pollTimer); pollTimer = null; } }
+  document.addEventListener("visibilitychange", function(){
+    if (!document.hidden && state.admin && state.view === "painel") atualizar();
+  });
+
+  function atualizar(){
+    if (!state.admin || state.carregando) return;
+    state.carregando = true;
+    call("api_listar", comSenha()).then(function(r){
+      state.carregando = false;
+      if (r && r.ok) { state.rows = r.linhas || []; render(); }
+      else if (r && r.erro === "auth") { toast({ kind:"warn", icon:"🔒", text:"Sua sessão expirou. Entre de novo." }); sair(); }
+    }).catch(function(){ state.carregando = false; });
+  }
+
+  function escrever(fn, dados, rotulo, linha){
+    if (pendente[linha.id]) return Promise.resolve(false);
+    pendente[linha.id] = true;
+    return call(fn, comSenha(dados)).then(function(r){
+      delete pendente[linha.id];
+      if (r && r.ok) { atualizar(); return true; }
+      if (r && r.erro === "auth") { sair(); return false; }
+      toast({ kind:"warn", icon:"⚠️", text:"Não deu para " + rotulo + ". Tente de novo." });
+      render();
+      return false;
+    }).catch(function(){
+      delete pendente[linha.id];
+      toast({ kind:"warn", icon:"⚠️", text:"Falha de conexão ao " + rotulo + "." });
+      return false;
+    });
+  }
+
+  function entregar(linha){
+    var card = document.querySelector('[data-row="' + linha.id + '"]');
+    if (card) { card.classList.add("swoosh"); setTimeout(function(){ card.classList.remove("swoosh"); }, 800); }
+    escrever("api_entregar", { id: linha.id, entregue: true, quem: state.cred ? state.cred.u : "" }, "registrar a entrega", linha)
+      .then(function(ok){
+        if (!ok) return;
+        recem[linha.id] = true;
+        chime();
+        toast({ icon:"🎁", strong: linha.crianca, text:"recebeu o presente! A planilha já foi atualizada.",
+                undo: function(){ reverter(linha); }, undoLabel:"Desfazer" });
+      });
+  }
+  function reverter(linha){
+    escrever("api_entregar", { id: linha.id, entregue: false }, "voltar para pendente", linha).then(function(ok){
+      if (ok) toast({ kind:"info", icon:"↩️", strong: linha.crianca, text:"voltou para pendente." });
+    });
+  }
+  function remover(linha){
+    escrever("api_remover", { id: linha.id }, "remover a linha", linha).then(function(ok){
+      if (ok) toast({ kind:"warn", icon:"🗑️", strong: linha.crianca, text:"foi removido da planilha." });
+    });
+  }
+
+  /* ---------- filtros ---------- */
+  $("q").addEventListener("input", function(){ state.q = this.value; render(); });
+  Array.prototype.forEach.call(document.querySelectorAll(".chip-f"), function(b){
+    b.addEventListener("click", function(){
+      state.filter = b.getAttribute("data-filter");
+      Array.prototype.forEach.call(document.querySelectorAll(".chip-f"), function(x){
+        x.setAttribute("aria-pressed", x === b ? "true" : "false");
+      });
+      render();
+    });
+  });
+  function visiveis(){
+    var rows = state.rows || [];
+    var q = norm(state.q), qd = digits(state.q);
+    return rows.filter(function(r){
+      if (state.filter !== "todos" && r.status !== state.filter) return false;
+      if (!q && !qd) return true;
+      if (qd && digits(r.telefone).indexOf(qd) !== -1) return true;
+      return norm(r.crianca).indexOf(q) !== -1 || norm(r.nome).indexOf(q) !== -1;
+    });
+  }
+
+  /* ---------- exportação ---------- */
+  if (ENDPOINT) {
+    $("dl-csv").textContent = "Abrir a planilha no Google";
+    $("dl-csv").addEventListener("click", function(){ window.open(SHEET_URL, "_blank"); });
+  } else $("dl-csv").hidden = true;
+
+  if (!ENDPOINT) {
+    ["view-inicio","view-painel"].forEach(function(onde){
+      var n = el("div", "notice warn");
+      n.style.maxWidth = "520px";
+      n.style.margin = "0 auto 18px";
+      n.appendChild(el("span", null, "\uD83E\uDDEA"));
+      var t = el("div");
+      t.appendChild(el("b", null, "Modo de teste. "));
+      t.appendChild(document.createTextNode("A interface est\u00e1 completa, mas os cadastros ficam guardados s\u00f3 neste aparelho \u2014 outro celular n\u00e3o v\u00ea esta lista. Para valer para todos, falta ligar a planilha do Google."));
+      n.appendChild(t);
+      var alvo = $(onde);
+      alvo.insertBefore(n, alvo.firstChild);
+    });
+  }
+  var CAB = ["Criança","Idade","Responsável","Telefone","Status","Cadastrado em","Entregue em"];
+  function linhasTabela(){
+    return visiveis().map(function(r){
+      return [r.crianca, r.idade || "", r.nome, maskPhone(r.telefone),
+        r.status === "entregue" ? "Entregue" : "Pendente",
+        fmtDate(r.criadoEm), r.entregueEm ? fmtDate(r.entregueEm) : ""];
+    });
+  }
+  $("copy-tsv").addEventListener("click", function(){
+    var texto = [CAB].concat(linhasTabela()).map(function(cols){
+      return cols.map(function(c){
+        var s = String(c == null ? "" : c).replace(/\t/g, " ");
+        if (/^[=+\-@]/.test(s)) s = "'" + s;
+        return s;
+      }).join("\t");
+    }).join("\n");
+    var pronto = function(){ toast({ kind:"info", icon:"📋", text:"Copiado. Cole numa célula do Sheets ou Excel." }); };
+    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(texto).then(pronto).catch(reserva);
+    else reserva();
+    function reserva(){
+      var ta = el("textarea");
+      ta.value = texto;
+      ta.style.cssText = "position:fixed;top:0;left:0;opacity:0;width:1px;height:1px";
+      document.body.appendChild(ta);
+      ta.select();
+      var ok = false;
+      try { ok = document.execCommand("copy"); } catch(e){}
+      document.body.removeChild(ta);
+      if (ok) pronto(); else toast({ kind:"warn", icon:"📋", text:"Não foi possível copiar aqui." });
+    }
+  });
+
+  var somBtn = $("sound-toggle");
+  function pintarSom(){
+    somBtn.textContent = "Som: " + (state.sound ? "ligado" : "desligado");
+    somBtn.setAttribute("aria-pressed", state.sound ? "true" : "false");
+  }
+  somBtn.addEventListener("click", function(){
+    state.sound = !state.sound;
+    lsSet("som", state.sound ? "1" : "0");
+    pintarSom();
+    if (state.sound) chime();
+  });
+  pintarSom();
+
+  /* ---------- renderização ---------- */
+  function render(){
+    var rows = state.rows;
+    var todos = rows ? rows.length : 0;
+    var feitos = rows ? rows.filter(function(r){ return r.status === "entregue"; }).length : 0;
+
+    $("t-all").textContent = todos;
+    $("t-done").textContent = feitos;
+    $("t-meter").style.width = (todos ? Math.round(feitos / todos * 100) : 0) + "%";
+    $("s-all").textContent = todos;
+    $("s-pend").textContent = todos - feitos;
+    $("s-done").textContent = feitos;
+    $("seg-count").textContent = rows ? "(" + todos + ")" : "";
+
+    if (!state.admin) return;
+    var lista = $("list");
+
+    if (!rows) {
+      lista.innerHTML = "";
+      for (var i = 0; i < 3; i++) lista.appendChild(el("div", "ghost"));
+      return;
+    }
+    if (!todos) {
+      lista.innerHTML = "";
+      var v = el("div", "empty");
+      v.appendChild(el("div", "big", "🎈"));
+      v.appendChild(el("h3", null, "A planilha começa vazia"));
+      v.appendChild(el("p", null, "Cada cadastro feito no formulário vira uma linha aqui e na planilha do Google. Depois é só tocar em Entregar."));
+      var ir = el("button", "btn btn-ghost", "Abrir o formulário de cadastro");
+      ir.type = "button";
+      ir.addEventListener("click", function(){ setView("cadastro"); $("nome").focus(); });
+      v.appendChild(ir);
+      lista.appendChild(v);
+      return;
+    }
+    var vis = visiveis();
+    lista.innerHTML = "";
+    if (!vis.length) {
+      var v2 = el("div", "empty");
+      v2.appendChild(el("div", "big", "🔍"));
+      v2.appendChild(el("h3", null, "Nada com esse filtro"));
+      v2.appendChild(el("p", null, "Mude a busca ou toque em “Todos” para ver os " + todos + " cadastros."));
+      lista.appendChild(v2);
+      return;
+    }
+    vis.forEach(function(r, i){ lista.appendChild(cartao(r, i)); });
+  }
+
+  function cartao(r, i){
+    var feito = r.status === "entregue";
+    var card = el("div", "rowcard" + (feito ? " is-done" : ""));
+    card.style.setProperty("--i", Math.min(i, 14));
+    card.setAttribute("data-row", r.id);
+    if (recem[r.id]) { card.classList.add("settle"); delete recem[r.id]; }
+
+    var quem = el("div", "who");
+    var kid = el("div", "kid", r.crianca);
+    if (r.idade) kid.appendChild(el("span", "idade", r.idade + (String(r.idade) === "1" ? " ano" : " anos")));
+    quem.appendChild(kid);
+    quem.appendChild(el("div", "guardian", r.nome));
+    if (r.repetido) quem.appendChild(el("span", "dup", "⚠️ nome repetido na lista"));
+    card.appendChild(quem);
+
+    var caixaTel = el("div", "tel");
+    var btnTel = el("button", null, r.telefone || "—");
+    btnTel.type = "button";
+    btnTel.title = "Copiar telefone";
+    btnTel.addEventListener("click", function(){
+      var texto = r.telefone || "";
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(texto)
+          .then(function(){ toast({ kind:"info", icon:"📋", text:"Telefone de " + r.nome + " copiado: " + texto }); })
+          .catch(function(){ toast({ kind:"info", icon:"📞", text: texto }); });
+      } else toast({ kind:"info", icon:"📞", text: texto });
+    });
+    caixaTel.appendChild(btnTel);
+    card.appendChild(caixaTel);
+
+    var quando = el("div", "when");
+    quando.appendChild(el("span", null, "Cadastro " + fmtDate(r.criadoEm)));
+    if (feito) quando.appendChild(el("span", "by", "Entrega " + fmtDate(r.entregueEm) + (r.entreguePor ? " · por " + r.entreguePor : "")));
+    card.appendChild(quando);
+
+    var chip = el("span", "chip " + (feito ? "chip-done" : "chip-pend"));
+    chip.appendChild(el("i"));
+    chip.appendChild(document.createTextNode(feito ? "Entregue" : "Pendente"));
+    card.appendChild(chip);
+
+    var acoes = el("div", "acts");
+    if (!feito) {
+      var b = el("button", "btn btn-deliver", "Entregar 🎁");
+      b.type = "button";
+      b.addEventListener("click", function(){ b.disabled = true; entregar(r); });
+      acoes.appendChild(b);
+    } else {
+      var rb = el("button", "btn btn-tiny", "Reverter");
+      rb.type = "button";
+      rb.addEventListener("click", function(){ reverter(r); });
+      acoes.appendChild(rb);
+    }
+    var del = el("button", "btn btn-tiny", "Remover");
+    del.type = "button";
+    del.addEventListener("click", function(){
+      if (del.getAttribute("data-armed") === "1") { remover(r); return; }
+      del.setAttribute("data-armed", "1");
+      del.classList.add("btn-danger");
+      del.textContent = "Confirmar?";
+      setTimeout(function(){
+        if (del.getAttribute("data-armed") === "1") {
+          del.setAttribute("data-armed", "");
+          del.classList.remove("btn-danger");
+          del.textContent = "Remover";
+        }
+      }, 4000);
+    });
+    acoes.appendChild(del);
+    card.appendChild(acoes);
+    return card;
+  }
+
+  /* ---------- borrão de movimento no scroll ---------- */
+  (function(){
+    var aura = document.querySelector(".aura");
+    if (!aura) return;
+    var ultimo = 0, parar = 0, ticando = false;
+    function medir(){
+      ticando = false;
+      if (reduzMovimento()) { aura.style.setProperty("--arrasto", "0px"); return; }
+      var y = window.pageYOffset || document.documentElement.scrollTop || 0;
+      var d = Math.min(26, Math.abs(y - ultimo) * 0.9);
+      ultimo = y;
+      aura.style.setProperty("--arrasto", d.toFixed(1) + "px");
+      clearTimeout(parar);
+      parar = setTimeout(function(){ aura.style.setProperty("--arrasto", "0px"); }, 130);
+    }
+    window.addEventListener("scroll", function(){
+      if (ticando) return;
+      ticando = true;
+      window.requestAnimationFrame(medir);
+    }, { passive: true });
+  })();
+
+  /* ---------- início ---------- */
+  restaurarSessao();
+  pintarMovimento();
+  pintarMeus();
+  aplicarView(state.admin ? "painel" : "inicio");
+  render();
+})();
+</script>
+</body>
+</html>
